@@ -1,0 +1,62 @@
+{
+  "categories": [
+    {
+      "name": "Backend",
+      "icon": "server",
+      "skills": [
+        { "name": ".NET 6/8", "level": "expert" },
+        { "name": "C#", "level": "expert" },
+        { "name": "Clean Architecture", "level": "expert" },
+        { "name": "CQRS", "level": "advanced" },
+        { "name": "Entity Framework Core", "level": "expert" },
+        { "name": "Dapper", "level": "advanced" },
+        { "name": "REST APIs", "level": "expert" }
+      ]
+    },
+    {
+      "name": "Frontend",
+      "icon": "layout",
+      "skills": [
+        { "name": "Angular 15-20", "level": "expert" },
+        { "name": "TypeScript", "level": "expert" },
+        { "name": "RxJS", "level": "advanced" },
+        { "name": "Micro-frontends", "level": "advanced" },
+        { "name": "Signals", "level": "intermediate" },
+        { "name": "Jest/Jasmine", "level": "advanced" }
+      ]
+    },
+    {
+      "name": "Cloud & DevOps",
+      "icon": "cloud",
+      "skills": [
+        { "name": "AWS", "level": "intermediate" },
+        { "name": "Azure", "level": "intermediate" },
+        { "name": "Docker", "level": "advanced" },
+        { "name": "GitLab CI/CD", "level": "advanced" },
+        { "name": "GitHub Actions", "level": "intermediate" }
+      ]
+    },
+    {
+      "name": "Databases",
+      "icon": "database",
+      "skills": [
+        { "name": "SQL Server", "level": "expert" },
+        { "name": "Oracle", "level": "expert" },
+        { "name": "MySQL", "level": "expert" },
+        { "name": "PostgreSQL", "level": "advanced" },
+        { "name": "PL/SQL", "level": "expert" }
+      ]
+    },
+    {
+      "name": "Arquitetura & Práticas",
+      "icon": "code",
+      "skills": [
+        { "name": "DDD", "level": "advanced" },
+        { "name": "SOLID", "level": "expert" },
+        { "name": "Code Review", "level": "expert" },
+        { "name": "Gitflow", "level": "expert" },
+        { "name": "SAFe/Scrum", "level": "advanced" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "certifications": [
+    {
+      "id": "azure-ai",
+      "name": "Microsoft Certified: Azure AI Fundamentals",
+      "issuer": "Microsoft",
+      "issueDate": "2025-10",
+      "expiryDate": null,
+      "credentialId": "919370BEB93F92E0",
+      "category": "ai",
+      "featured": true,
+      "icon": "azure"
+    },
+    {
+      "id": "ibm-watsonx",
+      "name": "IBM watsonx Orchestrate Build an AI Assistant",
+      "issuer": "IBM",
+      "issueDate": "2025-08",
+      "expiryDate": null,
+      "credentialId": null,
+      "category": "ai",
+      "featured": false,
+      "icon": "ibm"
+    },
+    {
+      "id": "azure-data",
+      "name": "Microsoft Certified: Azure Data Fundamentals",
+      "issuer": "Microsoft",
+      "issueDate": "2024-07",
+      "expiryDate": null,
+      "credentialId": "5F37B619E24C7DB2",
+      "category": "data",
+      "featured": true,
+      "icon": "azure"
+    },
+    {
+      "id": "api-security",
+      "name": "API Security Fundamentals",
+      "issuer": "APIsec University",
+      "issueDate": "2024-03",
+      "expiryDate": null,
+      "credentialId": null,
+      "category": "security",
+      "featured": false,
+      "icon": "security"
+    },
+    {
+      "id": "aws-developer",
+      "name": "AWS Certified Developer - Associate",
+      "issuer": "Amazon Web Services (AWS)",
+      "issueDate": "2023-12",
+      "expiryDate": "2026-12",
+      "credentialId": null,
+      "category": "cloud",
+      "featured": true,
+      "icon": "aws"
+    },
+    {
+      "id": "aws-practitioner",
+      "name": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services (AWS)",
+      "issueDate": "2022-07",
+      "expiryDate": "2026-12",
+      "credentialId": null,
+      "category": "cloud",
+      "featured": false,
+      "icon": "aws"
+    },
+    {
+      "id": "azure-fundamentals",
+      "name": "Microsoft Certified: Azure Fundamentals",
+      "issuer": "Microsoft",
+      "issueDate": "2021-12",
+      "expiryDate": null,
+      "credentialId": null,
+      "category": "cloud",
+      "featured": true,
+      "icon": "azure"
+    },
+    {
+      "id": "oracle-java",
+      "name": "Oracle Certified Associate, Java SE 7 Programmer",
+      "issuer": "Oracle",
+      "issueDate": "2018-06",
+      "expiryDate": null,
+      "credentialId": null,
+      "category": "development",
+      "featured": true,
+      "icon": "oracle"
+    }
+  ]
+}

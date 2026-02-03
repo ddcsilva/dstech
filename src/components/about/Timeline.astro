@@ -1,0 +1,24 @@
+---
+import TimelineItem from './TimelineItem.astro';
+import type { Experience } from '../../types';
+
+interface Props {
+  experiences: Experience[];
+  limit?: number;
+}
+
+const { experiences, limit } = Astro.props;
+
+const displayExperiences = limit ? experiences.slice(0, limit) : experiences;
+---
+
+<div class="relative">
+  <!-- Linha vertical -->
+  <div class="absolute left-4 md:left-8 top-0 bottom-0 w-0.5 bg-neutral-200" aria-hidden="true"></div>
+
+  <div class="space-y-8">
+    {displayExperiences.map((experience, index) => (
+      <TimelineItem experience={experience} isFirst={index === 0} />
+    ))}
+  </div>
+</div>

@@ -1,0 +1,13 @@
+{
+  "items": [
+    { "label": "Home", "href": "/" },
+    { "label": "Sobre", "href": "/sobre" },
+    { "label": "Projetos", "href": "/projetos" },
+    { "label": "CV", "href": "/cv" },
+    { "label": "Contato", "href": "/contato" }
+  ],
+  "social": [
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/ddcsilva/", "icon": "linkedin" },
+    { "label": "GitHub", "href": "https://github.com/ddcsilva/", "icon": "github" }
+  ]
+}

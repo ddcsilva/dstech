@@ -1,0 +1,34 @@
+{
+  "education": [
+    {
+      "id": "puc-minas",
+      "institution": "PUC Minas",
+      "degree": "Pós-graduação Lato Sensu - Especialização",
+      "field": "Engenharia de Software",
+      "period": {
+        "start": "2022",
+        "end": "2023"
+      }
+    },
+    {
+      "id": "etep",
+      "institution": "ETEP - Centro Universitario",
+      "degree": "Graduação",
+      "field": "Análise e Desenvolvimento de Sistemas",
+      "period": {
+        "start": "2012",
+        "end": "2014"
+      }
+    },
+    {
+      "id": "itj",
+      "institution": "ITJ - Instituto de Tecnologia de Jacareí",
+      "degree": "Curso Técnico",
+      "field": "Informática Industrial",
+      "period": {
+        "start": "2006",
+        "end": "2007"
+      }
+    }
+  ]
+}

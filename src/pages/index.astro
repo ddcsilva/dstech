@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/common/Section.astro';
+import Card from '../components/common/Card.astro';
+import Badge from '../components/common/Badge.astro';
+import Button from '../components/common/Button.astro';
+import projects from '../data/projects.json';
+
+const featuredProjects = projects.projects.filter((p) => p.featured).slice(0, 3);
+
+const specialties = [
+  {
+    title: 'Arquitetura Backend',
+    description: '.NET 8, Clean Architecture, CQRS, APIs REST de alta performance e escalabilidade.',
+    icon: 'server'
+  },
+  {
+    title: 'Frontend Enterprise',
+    description: 'Angular 17+, Micro-frontends, TypeScript, componentização escalável e padrões modernos.',
+    icon: 'layout'
+  },
+  {
+    title: 'Modernização de Legados',
+    description: 'Migração de sistemas ASP, VB6, WPF para arquiteturas modernas com governança.',
+    icon: 'refresh'
+  },
+  {
+    title: 'Cloud & DevOps',
+    description: 'AWS, Azure, Docker, pipelines CI/CD, automação e boas práticas de deploy.',
+    icon: 'cloud'
+  }
+];
+---
+
+<BaseLayout
+  title="Home"
+  description="Site pessoal de Danilo Silva, Engenheiro de Software Sênior com quase 20 anos de experiência em TI, especializado em .NET, Angular e modernização de sistemas."
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-primary-50 to-white py-20 sm:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 mb-6">
+        Danilo Silva
+      </h1>
+      <p class="text-xl sm:text-2xl text-neutral-600 mb-2">
+        Engenheiro de Software Sênior
+      </p>
+      <p class="text-base sm:text-lg text-neutral-500 mb-4">
+        .NET & Angular | Modernização de Sistemas | Cloud (AWS/Azure)
+      </p>
+      <p class="text-lg text-neutral-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+        Quase 20 anos em TI, mais de 13 dedicados ao desenvolvimento e arquitetura de software.
+        Especialista em modernização de legados, arquitetura limpa e entrega de soluções escaláveis.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/sobre" size="lg">
+          Conhecer trajetória
+        </Button>
+        <Button href="/projetos" variant="secondary" size="lg">
+          Ver projetos
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Especialidades -->
+  <Section
+    title="Áreas de Especialidade"
+    subtitle="Conhecimento técnico construído ao longo de duas décadas em projetos de grande porte"
+  >
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {specialties.map((specialty) => (
+        <Card>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+              {specialty.icon === 'server' && (
+                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                </svg>
+              )}
+              {specialty.icon === 'layout' && (
+                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                </svg>
+              )}
+              {specialty.icon === 'refresh' && (
+                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              )}
+              {specialty.icon === 'cloud' && (
+                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                </svg>
+              )}
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-neutral-900 mb-2">
+                {specialty.title}
+              </h3>
+              <p class="text-neutral-600">
+                {specialty.description}
+              </p>
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Projetos em Destaque -->
+  <Section
+    title="Projetos em Destaque"
+    subtitle="Iniciativas pessoais e voluntarias"
+    class="bg-neutral-50"
+  >
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      {featuredProjects.map((project) => (
+        <Card class="h-full flex flex-col">
+          <div class="flex items-start justify-between gap-2 mb-3">
+            <h3 class="text-lg font-semibold text-neutral-900">
+              {project.title}
+            </h3>
+            <Badge variant={project.type === 'volunteer' ? 'info' : 'primary'} size="sm">
+              {project.type === 'volunteer' ? 'Voluntário' : 'Pessoal'}
+            </Badge>
+          </div>
+          <p class="text-neutral-600 text-sm mb-4 flex-1">
+            {project.description}
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {project.tags.slice(0, 3).map((tag) => (
+              <Badge size="sm">{tag}</Badge>
+            ))}
+          </div>
+        </Card>
+      ))}
+    </div>
+    <div class="text-center">
+      <Button href="/projetos" variant="secondary">
+        Ver todos os projetos
+      </Button>
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <Section class="bg-primary-600 text-white">
+    <div class="text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+        Quer conhecer mais sobre minha trajetória?
+      </h2>
+      <p class="text-primary-100 mb-8 max-w-xl mx-auto">
+        Acesse meu currículo completo ou conecte-se comigo no LinkedIn para trocar ideias sobre tecnologia.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/cv" variant="secondary" size="lg" class="bg-white text-primary-600 hover:bg-primary-50">
+          Ver CV completo
+        </Button>
+        <Button href="/contato" variant="ghost" size="lg" class="text-white hover:bg-primary-500">
+          Conectar-se
+        </Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

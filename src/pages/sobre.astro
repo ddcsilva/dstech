@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/common/Section.astro';
+import Card from '../components/common/Card.astro';
+import Badge from '../components/common/Badge.astro';
+import Timeline from '../components/about/Timeline.astro';
+import experience from '../data/experience.json';
+import skills from '../data/skills.json';
+
+const workStyle = [
+  {
+    title: 'Qualidade Técnica',
+    description: 'Código limpo, testes automatizados, code review rigoroso e documentação clara.',
+    icon: 'check'
+  },
+  {
+    title: 'Previsibilidade',
+    description: 'Entregas consistentes com estimativas realistas e comunicação transparente.',
+    icon: 'calendar'
+  },
+  {
+    title: 'Arquitetura Sólida',
+    description: 'Decisões arquiteturais fundamentadas em padrões consolidados e boas práticas.',
+    icon: 'layers'
+  },
+  {
+    title: 'Colaboração',
+    description: 'Trabalho em equipe, mentoria de desenvolvedores e alinhamento com o negócio.',
+    icon: 'users'
+  }
+];
+---
+
+<BaseLayout
+  title="Sobre"
+  description="Conheça a trajetória profissional de Danilo Silva, Engenheiro de Software Sênior com quase 20 anos de experiência em desenvolvimento e arquitetura de software."
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-primary-50 to-white py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <h1 class="text-3xl sm:text-4xl font-bold text-neutral-900 mb-6">
+          Sobre mim
+        </h1>
+        <p class="text-lg text-neutral-600 leading-relaxed mb-4">
+          Sou <strong>Engenheiro de Software Sênior</strong> com quase 20 anos de experiência em TI, sendo mais de 13 dedicados ao desenvolvimento e à arquitetura de software.
+        </p>
+        <p class="text-lg text-neutral-600 leading-relaxed mb-4">
+          Minha carreira é marcada por atuação sólida em <strong>.NET</strong>, engenharia backend, arquitetura limpa, modernização de legados e pela entrega de soluções escaláveis em ambientes corporativos complexos.
+        </p>
+        <p class="text-lg text-neutral-600 leading-relaxed">
+          Tenho como propósito transformar sistemas legados em plataformas modernas, escaláveis e alinhadas ao negócio, sempre com foco em qualidade técnica e colaboração com equipes multidisciplinares.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como eu trabalho -->
+  <Section
+    title="Como eu trabalho"
+    subtitle="Princípios que guiam minha atuação profissional"
+  >
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {workStyle.map((item) => (
+        <Card>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+              {item.icon === 'check' && (
+                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              )}
+              {item.icon === 'calendar' && (
+                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              )}
+              {item.icon === 'layers' && (
+                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              )}
+              {item.icon === 'users' && (
+                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              )}
+            </div>
+            <div>
+              <h3 class="font-semibold text-neutral-900 mb-1">
+                {item.title}
+              </h3>
+              <p class="text-sm text-neutral-600">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Trajetoria -->
+  <Section
+    title="Trajetória Profissional"
+    subtitle="Principais experiências ao longo da carreira"
+    class="bg-neutral-50"
+  >
+    <Timeline experiences={experience.experiences} />
+  </Section>
+
+  <!-- Stack -->
+  <Section
+    title="Stack Tecnológico"
+    subtitle="Tecnologias e ferramentas que domino"
+  >
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {skills.categories.map((category) => (
+        <Card>
+          <h3 class="font-semibold text-neutral-900 mb-4 flex items-center gap-2">
+            {category.icon === 'server' && (
+              <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+              </svg>
+            )}
+            {category.icon === 'layout' && (
+              <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+              </svg>
+            )}
+            {category.icon === 'cloud' && (
+              <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+              </svg>
+            )}
+            {category.icon === 'database' && (
+              <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+              </svg>
+            )}
+            {category.icon === 'code' && (
+              <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            )}
+            {category.name}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {category.skills.map((skill) => (
+              <Badge
+                variant={skill.level === 'expert' ? 'primary' : skill.level === 'advanced' ? 'info' : 'default'}
+                size="sm"
+              >
+                {skill.name}
+              </Badge>
+            ))}
+          </div>
+        </Card>
+      ))}
+    </div>
+  </Section>
+</BaseLayout>

@@ -1,0 +1,82 @@
+{
+  "projects": [
+    {
+      "id": "squad-poker",
+      "title": "SquadPoker",
+      "description": "Aplicação web colaborativa para Planning Poker, criada para facilitar a estimativa de tarefas em times ágeis. Permite criar salas, votar em rodadas, acompanhar resultados em tempo real e manter histórico das votações.",
+      "tags": ["Angular 18", "TypeScript", "Firebase", "Tailwind CSS"],
+      "highlights": [
+        "Votação colaborativa em tempo real com Firebase",
+        "Salas privadas como moderador, participante ou espectador",
+        "Revelação controlada de votos pelo moderador",
+        "Histórico de rodadas com exportação em PNG/PDF",
+        "Interface responsiva e elegante para desktop e mobile"
+      ],
+      "status": "active",
+      "type": "personal",
+      "links": {
+        "demo": "https://squad-poker.web.app/",
+        "github": "https://github.com/ddcsilva/squad-poker"
+      },
+      "image": "/images/projects/squad-poker.webp",
+      "featured": true
+    },
+    {
+      "id": "virtus",
+      "title": "Virtus",
+      "description": "Sistema de gestão para o Instituto Teológico Virtus da Igreja Bethesda. Gerencia alunos, turmas, matrículas, mensalidades e pagamentos com arquitetura moderna e escalável.",
+      "tags": [".NET 8", "Angular 20", "PostgreSQL", "Clean Architecture"],
+      "highlights": [
+        "API REST com Clean Architecture e CQRS",
+        "Gestão completa de alunos, turmas e matrículas",
+        "Módulo financeiro com mensalidades e pagamentos",
+        "Frontend moderno com Angular 20 e Signals"
+      ],
+      "status": "development",
+      "type": "volunteer",
+      "links": {},
+      "image": "/images/projects/virtus.webp",
+      "featured": true
+    },
+    {
+      "id": "medstock",
+      "title": "MedStock",
+      "description": "Aplicativo mobile-first para controle de estoque de medicamentos domésticos. Permite visualizar rapidamente quais medicamentos existem em casa, suas quantidades e validades, evitando compras duplicadas e desperdício.",
+      "tags": ["Angular 20", "TypeScript", "Firebase", "Tailwind CSS"],
+      "highlights": [
+        "Busca inteligente por nome comercial ou princípio ativo",
+        "Controle de validade e quantidade por lote",
+        "Dashboard com alertas de vencimento e estoque baixo",
+        "Perfis diferenciados para adultos e crianças",
+        "PWA instalável em dispositivos móveis"
+      ],
+      "status": "active",
+      "type": "personal",
+      "links": {
+        "demo": "https://medstock.app.br/"
+      },
+      "image": "/images/projects/medstock.webp",
+      "featured": true
+    },
+    {
+      "id": "cruz-silva-care",
+      "title": "Cruz Silva Care",
+      "description": "Aplicação para acompanhamento de saúde familiar. Permite registrar e visualizar peso, pressão arterial, altura, exames laboratoriais e anexos. Arquitetura moderna com frontend PWA e backend .NET.",
+      "tags": ["Angular 20", ".NET 8", "PostgreSQL", "Firebase Auth"],
+      "highlights": [
+        "Gestão de membros da família com perfis individuais",
+        "Registro de peso, pressão arterial e altura",
+        "Cadastro de exames laboratoriais e não-laboratoriais",
+        "Upload de anexos e comprovantes de exames",
+        "PWA instalável com suporte offline"
+      ],
+      "status": "active",
+      "type": "personal",
+      "links": {
+        "demo": "https://care.dstech.net.br/"
+      },
+      "image": "/images/projects/cruz-silva-care.webp",
+      "featured": true
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+---
+import Badge from '../common/Badge.astro';
+import type { Experience } from '../../types';
+
+interface Props {
+  experience: Experience;
+  isFirst?: boolean;
+}
+
+const { experience, isFirst = false } = Astro.props;
+
+function formatPeriod(start: string, end: string | null): string {
+  const startYear = start.split('-')[0];
+
+  if (!end) {
+    return `${startYear} - Presente`;
+  }
+
+  const endYear = end.split('-')[0];
+  return `${startYear} - ${endYear}`;
+}
+---
+
+<div class="relative pl-12 md:pl-20">
+  <!-- Dot indicator -->
+  <div class:list={[
+    "absolute left-2.5 md:left-6.5 w-3 h-3 rounded-full border-2 border-white",
+    isFirst ? "bg-primary-600" : "bg-neutral-400"
+  ]} aria-hidden="true"></div>
+
+  <div class="bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-200 hover:shadow-md">
+    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+      <div>
+        <h3 class="text-lg font-semibold text-neutral-900">
+          {experience.role}
+        </h3>
+        <p class="text-primary-600 font-medium">
+          {experience.company}
+          {experience.client && (
+            <span class="text-neutral-500"> / {experience.client}</span>
+          )}
+        </p>
+      </div>
+      <div class="text-sm text-neutral-500 sm:text-right flex-shrink-0">
+        <p>{formatPeriod(experience.period.start, experience.period.end)}</p>
+        <p>{experience.location}</p>
+      </div>
+    </div>
+
+    <p class="text-neutral-600 mb-4">
+      {experience.description}
+    </p>
+
+    {experience.highlights && experience.highlights.length > 0 && (
+      <ul class="mb-4 space-y-1">
+        {experience.highlights.map((highlight) => (
+          <li class="flex items-start gap-2 text-sm text-neutral-600">
+            <svg class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span>{highlight}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+
+    <div class="flex flex-wrap gap-2">
+      {experience.technologies.slice(0, 8).map((tech) => (
+        <Badge size="sm">{tech}</Badge>
+      ))}
+      {experience.technologies.length > 8 && (
+        <Badge size="sm" variant="default">+{experience.technologies.length - 8}</Badge>
+      )}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/common/Section.astro';
+import ProjectCard from '../components/projects/ProjectCard.astro';
+import projects from '../data/projects.json';
+
+const personalProjects = projects.projects.filter((p) => p.type === 'personal');
+const volunteerProjects = projects.projects.filter((p) => p.type === 'volunteer');
+---
+
+<BaseLayout
+  title="Projetos"
+  description="Conheça os projetos pessoais e voluntários de Danilo Silva, incluindo ferramentas de Planning Poker, gestão de treinos e experimentos com IA."
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-primary-50 to-white py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <h1 class="text-3xl sm:text-4xl font-bold text-neutral-900 mb-6">
+          Projetos
+        </h1>
+        <p class="text-lg text-neutral-600 leading-relaxed">
+          Aqui estão alguns dos meus projetos pessoais e voluntários. São iniciativas que desenvolvo para aprender novas tecnologias, experimentar ideias e contribuir com a comunidade.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projetos Pessoais -->
+  <Section
+    title="Projetos Pessoais"
+    subtitle="Iniciativas próprias para aprendizado e experimentação"
+  >
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {personalProjects.map((project) => (
+        <ProjectCard project={project} showHighlights={true} />
+      ))}
+    </div>
+  </Section>
+
+  <!-- Projetos Voluntarios -->
+  {volunteerProjects.length > 0 && (
+    <Section
+      title="Projetos Voluntários"
+      subtitle="Contribuições para causas e comunidades"
+      class="bg-neutral-50"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {volunteerProjects.map((project) => (
+          <ProjectCard project={project} showHighlights={true} />
+        ))}
+      </div>
+    </Section>
+  )}
+</BaseLayout>

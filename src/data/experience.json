@@ -1,0 +1,115 @@
+{
+  "experiences": [
+    {
+      "id": "ibm-bradesco",
+      "company": "IBM",
+      "client": "Bradesco",
+      "role": "Senior Angular Developer",
+      "period": {
+        "start": "2025-01",
+        "end": null
+      },
+      "location": "São Paulo, Brasil - Remoto",
+      "description": "Atuação em projeto corporativo de grande porte, contribuindo para a evolução de aplicações enterprise utilizando Angular 17+ e arquitetura de micro-frontends.",
+      "highlights": [
+        "Desenvolvimento e padronização de componentes Angular reutilizáveis e escaláveis",
+        "Integração com APIs internas de alta complexidade e governança",
+        "Implementação de padrões arquiteturais, componentização, lazy loading, interceptors e Signals",
+        "Suporte arquitetural a decisões de integração entre front-end e APIs"
+      ],
+      "technologies": ["Angular 17+", "Micro-frontends", "TypeScript", "Jest", "RxJS", "Signals", "Git", "CI/CD"]
+    },
+    {
+      "id": "ibm-petrobras",
+      "company": "IBM",
+      "client": "Petrobras",
+      "role": "Senior .NET / Angular Developer",
+      "period": {
+        "start": "2023-01",
+        "end": "2025-01"
+      },
+      "location": "São Paulo, Brasil - Remoto",
+      "description": "Liderança técnica na modernização de sistemas legados de missão crítica para uma plataforma moderna baseada em .NET e Angular.",
+      "highlights": [
+        "Arquitetura e implementação de APIs com .NET 8, Clean Architecture e CQRS",
+        "Desenvolvimento do front-end com Angular 18 e Standalone Components",
+        "Padronização de práticas de desenvolvimento, revisão de código e adoção de Gitflow",
+        "Automação de pipelines CI/CD e aumento significativo da cobertura de testes"
+      ],
+      "technologies": [".NET 8", "C#", "Dapper", "EF Core", "Angular 18", "Docker", "GitLab CI", "Oracle", "SAFe"]
+    },
+    {
+      "id": "nttdata-itau",
+      "company": "NTT DATA",
+      "client": "Itau",
+      "role": "Líder Técnico / Engenheiro de Software",
+      "period": {
+        "start": "2021-10",
+        "end": "2022-12"
+      },
+      "location": "São Paulo, Brasil",
+      "description": "Desenvolvedor .NET e Angular, promovido a Líder Técnico, conduzindo squad responsável pela modernização de sistemas críticos, migrando aplicações desktop para arquitetura web moderna.",
+      "highlights": [
+        "Liderança técnica do squad, definindo padrões de arquitetura e boas práticas",
+        "Migração de aplicações WPF para APIs REST em .NET Core",
+        "Estruturação de ecossistema de micro front-ends Angular",
+        "Colaboração direta com áreas de negócio, traduzindo requisitos complexos"
+      ],
+      "technologies": [".NET Core", "C#", "Angular", "Micro Front-ends", "AWS", "CI/CD", "Scrum", "SOLID"]
+    },
+    {
+      "id": "urbam",
+      "company": "Urbam",
+      "client": "Prefeitura de São José dos Campos",
+      "role": "Desenvolvedor .NET",
+      "period": {
+        "start": "2018-10",
+        "end": "2021-10"
+      },
+      "location": "São José dos Campos, SP",
+      "description": "Modernização dos sistemas de saúde pública, substituindo aplicações legadas por plataforma web moderna e escalável.",
+      "highlights": [
+        "Desenvolvimento de sistema web com ASP.NET MVC, Web API e Entity Framework",
+        "Criação de interfaces responsivas com Razor Pages, JavaScript e Bootstrap",
+        "Documentação das APIs com Swagger, facilitando integrações"
+      ],
+      "technologies": ["ASP.NET MVC", "Web API", "Entity Framework", "JavaScript", "jQuery", "Bootstrap", "Oracle", "TFS"]
+    },
+    {
+      "id": "4ca",
+      "company": "4CA",
+      "client": null,
+      "role": "Desenvolvedor PL/SQL",
+      "period": {
+        "start": "2013-01",
+        "end": "2018-10"
+      },
+      "location": "Jacareí, SP",
+      "description": "Suporte, manutenção e evolução do sistema de gestão de saúde Tasy, criando soluções em PL/SQL e contribuindo com melhorias em sistemas internos.",
+      "highlights": [
+        "Desenvolvimento de relatórios estratégicos em PL/SQL para gestão hospitalar",
+        "Suporte ao sistema Tasy com resolução ágil de incidentes críticos",
+        "Implementação de melhorias de interface e sistemas internos com PHP"
+      ],
+      "technologies": ["PL/SQL", "SQL", "PHP", "Tasy", "Oracle"]
+    },
+    {
+      "id": "santa-casa-sjc",
+      "company": "Santa Casa de Misericórdia",
+      "client": "São José dos Campos",
+      "role": "Desenvolvedor PL/SQL",
+      "period": {
+        "start": "2012-02",
+        "end": "2013-01"
+      },
+      "location": "São José dos Campos, SP",
+      "description": "Responsável pelo suporte ao sistema hospitalar MV, criação de relatórios PL/SQL e desenvolvimento de sistemas internos em Java e PHP.",
+      "highlights": [
+        "Desenvolvimento de relatórios detalhados em PL/SQL para decisões administrativas e clínicas",
+        "Suporte ao sistema MV, garantindo continuidade dos processos hospitalares em ambiente de alta pressão",
+        "Desenvolvimento e manutenção de sistemas internos em Java e PHP conforme demandas"
+      ],
+      "technologies": ["PL/SQL", "SQL", "Java", "PHP", "MV"]
+    }
+  ]
+}

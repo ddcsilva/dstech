@@ -1,0 +1,62 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalURL?: string;
+  type?: 'website' | 'article';
+}
+
+const {
+  title,
+  description,
+  image = '/images/og-image.webp',
+  canonicalURL = Astro.url.href,
+  type = 'website'
+} = Astro.props;
+
+const siteTitle = 'Danilo Silva | Engenheiro de Software';
+const fullTitle = title === 'Home' ? siteTitle : `${title} | Danilo Silva`;
+const imageURL = new URL(image, Astro.site).toString();
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+<meta name="author" content="Danilo Silva" />
+<meta name="robots" content="index, follow" />
+
+<!-- Canonical -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageURL} />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="DStech" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageURL} />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#2563eb" />
