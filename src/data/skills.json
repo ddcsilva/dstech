@@ -4,7 +4,7 @@
       "name": "Backend",
       "icon": "server",
       "skills": [
-        { "name": ".NET 6/8", "level": "expert" },
+        { "name": ".NET", "level": "expert" },
         { "name": "C#", "level": "expert" },
         { "name": "Clean Architecture", "level": "expert" },
         { "name": "CQRS", "level": "advanced" },
