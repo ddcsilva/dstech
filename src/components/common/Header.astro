@@ -24,11 +24,11 @@ const currentPath = Astro.url.pathname;
               href={item.href}
               class:list={[
                 "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
-                currentPath === item.href
+                (currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href + '/')))
                   ? "bg-primary-50 text-primary-700"
                   : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100"
               ]}
-              aria-current={currentPath === item.href ? "page" : undefined}
+              aria-current={(currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href + '/'))) ? "page" : undefined}
             >
               {item.label}
             </a>
@@ -42,6 +42,7 @@ const currentPath = Astro.url.pathname;
         class="md:hidden p-2 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors"
         aria-expanded="false"
         aria-controls="mobile-menu"
+        aria-haspopup="true"
         aria-label="Abrir menu de navegação"
         id="mobile-menu-button"
       >
@@ -51,13 +52,21 @@ const currentPath = Astro.url.pathname;
       </button>
     </div>
 
+    <!-- Mobile Menu Backdrop -->
+    <div
+      id="mobile-menu-backdrop"
+      class="md:hidden fixed inset-0 z-40 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300"
+      aria-hidden="true"
+    ></div>
+
     <!-- Mobile Menu Drawer -->
     <div
       id="mobile-menu"
-      class="md:hidden fixed inset-0 z-50 bg-white transform translate-x-full transition-transform duration-300 ease-in-out"
+      class="md:hidden fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out"
       role="dialog"
       aria-modal="true"
       aria-label="Menu de navegação"
+      aria-hidden="true"
     >
       <div class="flex items-center justify-between h-16 px-4 border-b border-neutral-200">
         <a href="/" class="font-bold text-xl text-primary-600">
@@ -81,7 +90,7 @@ const currentPath = Astro.url.pathname;
               href={item.href}
               class:list={[
                 "block px-4 py-3 rounded-lg text-lg font-medium transition-colors",
-                currentPath === item.href
+                (currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href + '/')))
                   ? "bg-primary-50 text-primary-700"
                   : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100"
               ]}
@@ -124,31 +133,136 @@ const currentPath = Astro.url.pathname;
   const menuButton = document.getElementById('mobile-menu-button');
   const menuClose = document.getElementById('mobile-menu-close');
   const mobileMenu = document.getElementById('mobile-menu');
+  const backdrop = document.getElementById('mobile-menu-backdrop');
+  
+  // Store focusable elements for focus trap
+  let focusableElements: HTMLElement[] = [];
+  let firstFocusable: HTMLElement | null = null;
+  let lastFocusable: HTMLElement | null = null;
+  let previousActiveElement: HTMLElement | null = null;
+
+  // Prevent scroll on iOS
+  function preventScroll(e: TouchEvent) {
+    e.preventDefault();
+  }
 
   function openMenu() {
-    mobileMenu?.classList.remove('translate-x-full');
-    mobileMenu?.classList.add('translate-x-0');
+    if (!mobileMenu || !backdrop) return;
+    
+    // Store current focus
+    previousActiveElement = document.activeElement as HTMLElement;
+    
+    // Open menu
+    mobileMenu.classList.remove('translate-x-full');
+    mobileMenu.classList.add('translate-x-0');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    
+    // Show backdrop
+    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+    backdrop.classList.add('opacity-100', 'pointer-events-auto');
+    
     menuButton?.setAttribute('aria-expanded', 'true');
+    
+    // Prevent body scroll
     document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.top = `-${window.scrollY}px`;
+    
+    // iOS scroll lock
+    document.addEventListener('touchmove', preventScroll, { passive: false });
+    
+    // Setup focus trap
+    setupFocusTrap();
+    
+    // Focus close button after animation
+    setTimeout(() => {
+      menuClose?.focus();
+    }, 100);
   }
 
   function closeMenu() {
-    mobileMenu?.classList.remove('translate-x-0');
-    mobileMenu?.classList.add('translate-x-full');
+    if (!mobileMenu || !backdrop) return;
+    
+    // Close menu
+    mobileMenu.classList.remove('translate-x-0');
+    mobileMenu.classList.add('translate-x-full');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    
+    // Hide backdrop
+    backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+    backdrop.classList.add('opacity-0', 'pointer-events-none');
+    
     menuButton?.setAttribute('aria-expanded', 'false');
+    
+    // Restore body scroll
+    const scrollY = document.body.style.top;
     document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.style.top = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    
+    // Remove iOS scroll lock
+    document.removeEventListener('touchmove', preventScroll);
+    
+    // Restore focus
+    previousActiveElement?.focus();
   }
 
+  function setupFocusTrap() {
+    if (!mobileMenu) return;
+    
+    focusableElements = Array.from(
+      mobileMenu.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+      )
+    );
+    
+    firstFocusable = focusableElements[0] || null;
+    lastFocusable = focusableElements[focusableElements.length - 1] || null;
+  }
+
+  function handleFocusTrap(e: KeyboardEvent) {
+    if (e.key !== 'Tab' || !mobileMenu?.classList.contains('translate-x-0')) return;
+    
+    if (e.shiftKey) {
+      if (document.activeElement === firstFocusable) {
+        e.preventDefault();
+        lastFocusable?.focus();
+      }
+    } else {
+      if (document.activeElement === lastFocusable) {
+        e.preventDefault();
+        firstFocusable?.focus();
+      }
+    }
+  }
+
+  // Event listeners
   menuButton?.addEventListener('click', openMenu);
   menuClose?.addEventListener('click', closeMenu);
+  backdrop?.addEventListener('click', closeMenu);
 
   // Close on escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
+    if (e.key === 'Escape' && mobileMenu?.classList.contains('translate-x-0')) {
+      closeMenu();
+    }
   });
+
+  // Focus trap
+  document.addEventListener('keydown', handleFocusTrap);
 
   // Close on link click
   mobileMenu?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', closeMenu);
+  });
+
+  // Handle resize - close menu if switching to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768 && mobileMenu?.classList.contains('translate-x-0')) {
+      closeMenu();
+    }
   });
 </script>

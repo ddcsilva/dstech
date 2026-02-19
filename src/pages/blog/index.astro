@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PostCard from '@components/blog/PostCard.astro';
+import Section from '@components/common/Section.astro';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+
+const posts = allPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+function calcReadingTime(body: string): number {
+  const words = body.trim().split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
+const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+---
+
+<BaseLayout
+  title="Blog | DStech"
+  description="Artigos sobre desenvolvimento de software, Angular, .NET, arquitetura e boas práticas — escritos por Danilo Silva."
+>
+  <!-- Hero -->
+  <div class="bg-gradient-to-b from-primary-50 to-white py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-sm font-semibold text-primary-600 uppercase tracking-wide mb-3">Blog</p>
+        <h1 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-4 leading-tight">
+          Pensamentos sobre<br />desenvolvimento
+        </h1>
+        <p class="text-lg text-neutral-600 leading-relaxed">
+          Artigos práticos sobre Angular, .NET, arquitetura de software e tudo que aprendo no dia a dia como dev.
+          Sem enrolação — direto ao ponto.
+        </p>
+
+        <!-- RSS link -->
+        <a
+          href="/rss.xml"
+          class="inline-flex items-center gap-2 mt-6 text-sm text-neutral-500 hover:text-primary-600 transition-colors"
+          aria-label="Feed RSS do blog"
+        >
+          <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20 4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+          </svg>
+          Feed RSS
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Posts -->
+  <Section containerClass="max-w-6xl">
+    {posts.length === 0 ? (
+      <div class="text-center py-16 text-neutral-500">
+        <p class="text-lg">Nenhum artigo publicado ainda. Em breve!</p>
+      </div>
+    ) : (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.map((post) => (
+          <PostCard
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            tags={post.data.tags}
+            slug={post.slug}
+            readingTime={calcReadingTime(post.body)}
+          />
+        ))}
+      </div>
+    )}
+
+    <!-- Tags de navegação -->
+    {allTags.length > 0 && (
+      <div class="mt-16 pt-8 border-t border-neutral-200">
+        <p class="text-sm font-medium text-neutral-500 mb-4 uppercase tracking-wide">Tópicos</p>
+        <div class="flex flex-wrap gap-2">
+          {allTags.map((tag) => (
+            <span class="inline-flex items-center rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-700 hover:bg-primary-50 hover:text-primary-700 transition-colors cursor-default">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    )}
+  </Section>
+</BaseLayout>

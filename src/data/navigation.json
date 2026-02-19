@@ -4,6 +4,7 @@
     { "label": "Sobre", "href": "/sobre" },
     { "label": "Projetos", "href": "/projetos" },
     { "label": "CV", "href": "/cv" },
+    { "label": "Blog", "href": "/blog" },
     { "label": "Contato", "href": "/contato" }
   ],
   "social": [

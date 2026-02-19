@@ -1,0 +1,110 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  tags: string[];
+  readingTime: number;
+}
+
+const { title, description, pubDate, updatedDate, tags, readingTime } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('pt-BR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric'
+}).format(pubDate);
+
+const formattedUpdated = updatedDate
+  ? new Intl.DateTimeFormat('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' }).format(updatedDate)
+  : null;
+---
+
+<BaseLayout title={`${title} | DStech Blog`} description={description}>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+
+    <!-- Voltar ao blog -->
+    <a
+      href="/blog"
+      class="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-primary-600 transition-colors mb-10 group"
+    >
+      <svg class="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Voltar ao blog
+    </a>
+
+    <!-- Header do post -->
+    <header class="mb-10">
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2 mb-5">
+        {tags.map((tag) => (
+          <span class="inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-xs font-medium text-primary-700">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <!-- Título -->
+      <h1 class="text-3xl sm:text-4xl font-bold text-neutral-900 leading-tight mb-6">
+        {title}
+      </h1>
+
+      <!-- Meta info -->
+      <div class="flex flex-wrap items-center gap-5 text-sm text-neutral-500 pb-8 border-b border-neutral-200">
+        <div class="flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+        </div>
+
+        <div class="flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>{readingTime} min de leitura</span>
+        </div>
+
+        {formattedUpdated && (
+          <div class="flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            <span>Atualizado em {formattedUpdated}</span>
+          </div>
+        )}
+      </div>
+    </header>
+
+    <!-- Conteúdo do post -->
+    <div class="prose">
+      <slot />
+    </div>
+
+    <!-- Rodapé do post -->
+    <footer class="mt-14 pt-8 border-t border-neutral-200 flex items-center justify-between gap-4 flex-wrap">
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-primary-600 transition-colors group"
+      >
+        <svg class="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Ver mais artigos
+      </a>
+
+      <div class="flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </footer>
+
+  </div>
+</BaseLayout>

@@ -1,0 +1,46 @@
+---
+import Badge from '../common/Badge.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags: string[];
+  slug: string;
+  readingTime: number;
+}
+
+const { title, description, pubDate, tags, slug, readingTime } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('pt-BR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric'
+}).format(pubDate);
+---
+
+<article class="bg-white rounded-xl border border-neutral-200 overflow-hidden transition-all duration-200 hover:shadow-lg hover:border-neutral-300 h-full flex flex-col group">
+  <a href={`/blog/${slug}`} class="p-6 flex-1 flex flex-col">
+    <div class="flex items-center gap-2 text-sm text-neutral-500 mb-3">
+      <time datetime={pubDate.toISOString()}>
+        {formattedDate}
+      </time>
+      <span aria-hidden="true">·</span>
+      <span>{readingTime} min de leitura</span>
+    </div>
+
+    <h2 class="text-xl font-semibold text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors leading-snug">
+      {title}
+    </h2>
+
+    <p class="text-neutral-600 mb-5 flex-1 leading-relaxed">
+      {description}
+    </p>
+
+    <div class="flex flex-wrap gap-2 mt-auto">
+      {tags.map((tag) => (
+        <Badge>{tag}</Badge>
+      ))}
+    </div>
+  </a>
+</article>
