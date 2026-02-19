@@ -25,12 +25,12 @@
       "id": "virtus",
       "title": "Virtus",
       "description": "Sistema de gestão para o Instituto Teológico Virtus da Igreja Bethesda. Gerencia alunos, turmas, matrículas, mensalidades e pagamentos com arquitetura moderna e escalável.",
-      "tags": [".NET 8", "Angular 20", "PostgreSQL", "Clean Architecture"],
+      "tags": [".NET", "Angular", "PostgreSQL", "Clean Architecture"],
       "highlights": [
         "API REST com Clean Architecture e CQRS",
         "Gestão completa de alunos, turmas e matrículas",
         "Módulo financeiro com mensalidades e pagamentos",
-        "Frontend moderno com Angular 20 e Signals"
+        "Frontend moderno com Angular e Signals"
       ],
       "status": "development",
       "type": "volunteer",
@@ -62,7 +62,7 @@
       "id": "cruz-silva-care",
       "title": "Cruz Silva Care",
       "description": "Aplicação para acompanhamento de saúde familiar. Permite registrar e visualizar peso, pressão arterial, altura, exames laboratoriais e anexos. Arquitetura moderna com frontend PWA e backend .NET.",
-      "tags": ["Angular 20", ".NET 8", "PostgreSQL", "Firebase Auth"],
+      "tags": ["Angular", ".NET", "PostgreSQL", "Firebase Auth"],
       "highlights": [
         "Gestão de membros da família com perfis individuais",
         "Registro de peso, pressão arterial e altura",
@@ -76,6 +76,27 @@
         "demo": "https://care.dstech.net.br/"
       },
       "image": "/images/projects/cruz-silva-care.webp",
+      "featured": true
+    },
+    {
+      "id": "lista-ai",
+      "title": "Lista AI",
+      "description": "Aplicativo de lista de compras pessoal com foco em rapidez e uso offline. Permite organizar compras por categorias, registrar itens por voz, criar favoritos e manter histórico. PWA instalável com sincronização cross-device via Firebase.",
+      "tags": ["Angular 20", "TypeScript", "Firebase", "Tailwind CSS"],
+      "highlights": [
+        "Entrada por voz com reconhecimento em português",
+        "Inclusão automática em 9 categorias (Hortifruti, Carnes, Laticínios...)",
+        "Favoritos e histórico de compras frequentes",
+        "PWA offline-first com sincronização em nuvem",
+        "Arquitetura limpa com cobertura de testes 100%"
+      ],
+      "status": "active",
+      "type": "personal",
+      "links": {
+        "demo": "https://lista-ai-5d666.web.app/",
+        "github": "https://github.com/ddcsilva/lista-ai"
+      },
+      "image": "/images/projects/lista-ai.webp",
       "featured": true
     }
   ]

@@ -41,7 +41,7 @@ function formatPeriod(start: string, end: string | null): string {
           )}
         </p>
       </div>
-      <div class="text-sm text-neutral-500 sm:text-right flex-shrink-0">
+      <div class="text-sm text-neutral-500 sm:text-right shrink-0">
         <p>{formatPeriod(experience.period.start, experience.period.end)}</p>
         <p>{experience.location}</p>
       </div>
@@ -55,7 +55,7 @@ function formatPeriod(start: string, end: string | null): string {
       <ul class="mb-4 space-y-1">
         {experience.highlights.map((highlight) => (
           <li class="flex items-start gap-2 text-sm text-neutral-600">
-            <svg class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg class="w-4 h-4 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
             <span>{highlight}</span>

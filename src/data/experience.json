@@ -31,12 +31,12 @@
       "location": "São Paulo, Brasil - Remoto",
       "description": "Liderança técnica na modernização de sistemas legados de missão crítica para uma plataforma moderna baseada em .NET e Angular.",
       "highlights": [
-        "Arquitetura e implementação de APIs com .NET 8, Clean Architecture e CQRS",
-        "Desenvolvimento do front-end com Angular 18 e Standalone Components",
+        "Arquitetura e implementação de APIs com .NET, Clean Architecture e CQRS",
+        "Desenvolvimento do front-end com Angular e Standalone Components",
         "Padronização de práticas de desenvolvimento, revisão de código e adoção de Gitflow",
         "Automação de pipelines CI/CD e aumento significativo da cobertura de testes"
       ],
-      "technologies": [".NET 8", "C#", "Dapper", "EF Core", "Angular 18", "Docker", "GitLab CI", "Oracle", "SAFe"]
+      "technologies": [".NET", "C#", "Dapper", "EF Core", "Angular", "Docker", "GitLab CI", "Oracle", "SAFe"]
     },
     {
       "id": "nttdata-itau",

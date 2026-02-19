@@ -20,22 +20,18 @@ const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
 
 <BaseLayout
   title="Blog | DStech"
-  description="Artigos sobre desenvolvimento de software, Angular, .NET, arquitetura e boas práticas — escritos por Danilo Silva."
+  description="Artigos sobre desenvolvimento de software, Angular, .NET, arquitetura e boas práticas, escritos por Danilo Silva."
 >
   <!-- Hero -->
-  <div class="bg-gradient-to-b from-primary-50 to-white py-16 sm:py-20">
+  <section class="bg-linear-to-b from-primary-50 to-white py-16 sm:py-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl">
-        <p class="text-sm font-semibold text-primary-600 uppercase tracking-wide mb-3">Blog</p>
-        <h1 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-4 leading-tight">
-          Pensamentos sobre<br />desenvolvimento
+      <div class="max-w-3xl">
+        <h1 class="text-3xl sm:text-4xl font-bold text-neutral-900 mb-6">
+          Blog
         </h1>
         <p class="text-lg text-neutral-600 leading-relaxed">
-          Artigos práticos sobre Angular, .NET, arquitetura de software e tudo que aprendo no dia a dia como dev.
-          Sem enrolação — direto ao ponto.
+          Artigos práticos sobre Angular, .NET, arquitetura de software e tudo que aprendo no dia a dia como dev. Sem enrolação, direto ao ponto.
         </p>
-
-        <!-- RSS link -->
         <a
           href="/rss.xml"
           class="inline-flex items-center gap-2 mt-6 text-sm text-neutral-500 hover:text-primary-600 transition-colors"
@@ -48,7 +44,7 @@ const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
         </a>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Posts -->
   <Section containerClass="max-w-6xl">
@@ -77,7 +73,7 @@ const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
         <p class="text-sm font-medium text-neutral-500 mb-4 uppercase tracking-wide">Tópicos</p>
         <div class="flex flex-wrap gap-2">
           {allTags.map((tag) => (
-            <span class="inline-flex items-center rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-700 hover:bg-primary-50 hover:text-primary-700 transition-colors cursor-default">
+            <span class="inline-flex items-center rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-700">
               {tag}
             </span>
           ))}
