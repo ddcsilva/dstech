@@ -328,7 +328,7 @@ Porque, no final das contas, a regra de ouro continua a mesma: **é um Copilot, 
 
 **Referências:**
 
-- <a href="https://www.amazon.com.br/GitHub-Copilot-Handbook-programming-collaboration-ebook/dp/B0FLXL6HL2" target="_blank">**The GitHub Copilot Handbook**</a>, de Rob Bos e Randy Pagels
-- <a href="https://www.amazon.com.br/Learning-GitHub-Copilot-Multiplying-Productivity-ebook/dp/B0FHSDHRFF" target="_blank">**Learning GitHub Copilot**</a>, de Brent Laster
-- <a href="https://docs.github.com/pt/copilot" target="_blank">**GitHub Docs**</a>: Personalização de respostas, Habilidades de agente, Model Context Protocol
-- <a href="https://www.youtube.com/@code" target="_blank">**Visual Studio Code**</a>: Canal oficial do YouTube (demonstrações de Custom Instructions)
+- [**The GitHub Copilot Handbook**](https://www.amazon.com.br/GitHub-Copilot-Handbook-programming-collaboration-ebook/dp/B0FLXL6HL2), de Rob Bos e Randy Pagels
+- [**Learning GitHub Copilot**](https://www.amazon.com.br/Learning-GitHub-Copilot-Multiplying-Productivity-ebook/dp/B0FHSDHRFF), de Brent Laster
+- [**GitHub Docs**](https://docs.github.com/pt/copilot): Personalização de respostas, Habilidades de agente, Model Context Protocol
+- [**Visual Studio Code**](https://www.youtube.com/@code): Canal oficial do YouTube (demonstrações de Custom Instructions)
