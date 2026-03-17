@@ -1,5 +1,5 @@
 ---
-title: 'Guia Definitivo: GitHub Copilot Instructions e a Ciência da Personalização'
+title: 'Como fazer o Copilot entender seu projeto de verdade'
 description: 'O Copilot é poderoso, mas genérico. Então você descobre que pode moldá-lo ao seu contexto, e tudo muda. Entenda como Custom Instructions transformam uma IA generalista num parceiro que já conhece sua arquitetura, seus padrões e até suas manias.'
 pubDate: '2026-03-17'
 tags: ['github-copilot', 'ia', 'produtividade', 'devtools', 'arquitetura']
