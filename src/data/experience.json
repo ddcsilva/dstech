@@ -4,20 +4,22 @@
       "id": "ibm-bradesco",
       "company": "IBM",
       "client": "Bradesco",
-      "role": "Senior Angular Developer",
+      "role": "Senior Java / Angular Developer",
       "period": {
         "start": "2025-01",
         "end": null
       },
       "location": "São Paulo, Brasil - Remoto",
-      "description": "Atuação em projeto corporativo de grande porte, contribuindo para a evolução de aplicações enterprise utilizando Angular 17+ e arquitetura de micro-frontends.",
+      "description": "Atuação em projeto corporativo de grande porte, contribuindo para a evolução de aplicações enterprise utilizando Angular 17+, arquitetura de micro-frontends e serviços Java com Spring Boot 3.",
       "highlights": [
         "Desenvolvimento e padronização de componentes Angular reutilizáveis e escaláveis",
         "Integração com APIs internas de alta complexidade e governança",
         "Implementação de padrões arquiteturais, componentização, lazy loading, interceptors e Signals",
-        "Suporte arquitetural a decisões de integração entre front-end e APIs"
+        "Suporte arquitetural a decisões de integração entre front-end e APIs",
+        "Desenvolvimento de serviços Java com Spring Boot seguindo arquitetura hexagonal",
+        "Implementação de microserviços e camadas BFF (Backend for Frontend) para integração entre front-end e APIs legadas"
       ],
-      "technologies": ["Angular 17+", "Micro-frontends", "TypeScript", "Jest", "RxJS", "Signals", "Git", "CI/CD"]
+      "technologies": ["Angular 17+", "Micro-frontends", "TypeScript", "Jest", "RxJS", "Signals", "Java", "Spring Boot 3", "Microserviços", "Arquitetura Hexagonal", "BFF", "Git", "CI/CD"]
     },
     {
       "id": "ibm-petrobras",

@@ -6,8 +6,11 @@
       "skills": [
         { "name": ".NET", "level": "expert" },
         { "name": "C#", "level": "expert" },
-        { "name": "Clean Architecture", "level": "expert" },
+        { "name": "Java", "level": "expert" },
+        { "name": "Spring Boot", "level": "expert" },
         { "name": "CQRS", "level": "advanced" },
+        { "name": "Microserviços", "level": "advanced" },
+        { "name": "BFF (Backend for Frontend)", "level": "advanced" },
         { "name": "Entity Framework Core", "level": "expert" },
         { "name": "Dapper", "level": "advanced" },
         { "name": "REST APIs", "level": "expert" }
@@ -17,7 +20,7 @@
       "name": "Frontend",
       "icon": "layout",
       "skills": [
-        { "name": "Angular 15-20", "level": "expert" },
+        { "name": "Angular", "level": "expert" },
         { "name": "TypeScript", "level": "expert" },
         { "name": "RxJS", "level": "advanced" },
         { "name": "Micro-frontends", "level": "advanced" },
@@ -51,6 +54,8 @@
       "name": "Arquitetura & Práticas",
       "icon": "code",
       "skills": [
+        { "name": "Clean Architecture", "level": "expert" },
+        { "name": "Arquitetura Hexagonal", "level": "advanced" },
         { "name": "DDD", "level": "advanced" },
         { "name": "SOLID", "level": "expert" },
         { "name": "Code Review", "level": "expert" },

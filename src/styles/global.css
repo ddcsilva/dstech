@@ -358,25 +358,33 @@ section {
   width: 100%;
   border-collapse: collapse;
   margin: 1.75em 0;
-  font-size: 0.9em;
-  overflow-x: auto;
+  font-size: 0.85em;
   display: block;
+  overflow-x: auto;
 }
 
 .prose th {
   background-color: #f8fafc;
   font-weight: 600;
   text-align: left;
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 0.75rem;
   border: 1px solid #e2e8f0;
   color: #171717;
-  white-space: nowrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .prose td {
-  padding: 0.625rem 1rem;
+  padding: 0.5rem 0.75rem;
   border: 1px solid #e2e8f0;
   vertical-align: top;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.prose td code, .prose th code {
+  word-break: break-all;
+  white-space: normal;
 }
 
 .prose tr:nth-child(even) td {

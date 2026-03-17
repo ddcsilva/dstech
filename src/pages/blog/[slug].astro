@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BlogLayout from '@layouts/BlogLayout.astro';
+import { calcReadingTime } from '../../utils/reading-time';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -17,12 +18,8 @@ interface Props {
 const { post } = Astro.props;
 const { Content } = await post.render();
 
-function calcReadingTime(body: string): number {
-  const words = body.trim().split(/\s+/).length;
-  return Math.max(1, Math.ceil(words / 200));
-}
-
 const readingTime = calcReadingTime(post.body);
+const ogImage = post.data.image || `/og/${post.slug}.png`;
 ---
 
 <BlogLayout
@@ -32,6 +29,7 @@ const readingTime = calcReadingTime(post.body);
   updatedDate={post.data.updatedDate}
   tags={post.data.tags}
   readingTime={readingTime}
+  image={ogImage}
 >
   <Content />
 </BlogLayout>

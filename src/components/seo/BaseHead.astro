@@ -5,14 +5,18 @@ interface Props {
   image?: string;
   canonicalURL?: string;
   type?: 'website' | 'article';
+  pubDate?: Date;
+  tags?: string[];
 }
 
 const {
   title,
   description,
-  image = '/images/og-image.webp',
+  image = '/og-default.png',
   canonicalURL = Astro.url.href,
-  type = 'website'
+  type = 'website',
+  pubDate,
+  tags = []
 } = Astro.props;
 
 const siteTitle = 'Danilo Silva | Engenheiro de Software';
@@ -43,8 +47,20 @@ const imageURL = new URL(image, Astro.site).toString();
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={imageURL} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 <meta property="og:locale" content="pt_BR" />
 <meta property="og:site_name" content="DStech" />
+
+{type === 'article' && pubDate && (
+  <meta property="article:published_time" content={pubDate.toISOString()} />
+)}
+{type === 'article' && (
+  <meta property="article:author" content="Danilo Silva" />
+)}
+{type === 'article' && tags.map((tag) => (
+  <meta property="article:tag" content={tag} />
+))}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -61,3 +77,42 @@ const imageURL = new URL(image, Astro.site).toString();
 
 <!-- Theme Color -->
 <meta name="theme-color" content="#2563eb" />
+
+<!-- JSON-LD Structured Data -->
+{type === 'article' && pubDate ? (
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "image": imageURL,
+    "datePublished": pubDate.toISOString(),
+    "author": {
+      "@type": "Person",
+      "name": "Danilo Silva",
+      "url": "https://dstech.net.br"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Danilo Silva",
+      "url": "https://dstech.net.br"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": canonicalURL
+    },
+    "keywords": tags.join(", ")
+  })} />
+) : (
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Danilo Silva",
+    "url": "https://dstech.net.br",
+    "jobTitle": "Engenheiro de Software Sênior",
+    "sameAs": [
+      "https://www.linkedin.com/in/ddcsilva/",
+      "https://github.com/ddcsilva/"
+    ]
+  })} />
+)}

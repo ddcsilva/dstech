@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import PostCard from '@components/blog/PostCard.astro';
 import Section from '@components/common/Section.astro';
+import { calcReadingTime } from '../../utils/reading-time';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 
@@ -10,16 +11,11 @@ const posts = allPosts.sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
-function calcReadingTime(body: string): number {
-  const words = body.trim().split(/\s+/).length;
-  return Math.max(1, Math.ceil(words / 200));
-}
-
 const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
 ---
 
 <BaseLayout
-  title="Blog | DStech"
+  title="Blog"
   description="Artigos sobre desenvolvimento de software, Angular, .NET, arquitetura e boas práticas, escritos por Danilo Silva."
 >
   <!-- Hero -->

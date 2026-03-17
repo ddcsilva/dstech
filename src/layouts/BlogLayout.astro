@@ -8,9 +8,10 @@ interface Props {
   updatedDate?: Date;
   tags: string[];
   readingTime: number;
+  image?: string;
 }
 
-const { title, description, pubDate, updatedDate, tags, readingTime } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, readingTime, image } = Astro.props;
 
 const formattedDate = new Intl.DateTimeFormat('pt-BR', {
   day: 'numeric',
@@ -23,7 +24,7 @@ const formattedUpdated = updatedDate
   : null;
 ---
 
-<BaseLayout title={`${title} | DStech Blog`} description={description}>
+<BaseLayout title={title} description={description} image={image} type="article" pubDate={pubDate} tags={tags}>
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
 
     <!-- Voltar ao blog -->
@@ -78,6 +79,16 @@ const formattedUpdated = updatedDate
           </div>
         )}
       </div>
+
+      <!-- Autoria -->
+      <div class="mt-5 flex items-center gap-2 text-sm text-neutral-400">
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+        <span>Por <span class="font-medium text-neutral-500">Danilo Silva</span></span>
+        <span class="text-neutral-300" aria-hidden="true">&middot;</span>
+        <span class="italic">Revisado pela IA</span>
+      </div>
     </header>
 
     <!-- Conteúdo do post -->
@@ -107,4 +118,48 @@ const formattedUpdated = updatedDate
     </footer>
 
   </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada" style="display:none" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 cursor-zoom-out">
+    <button id="lightbox-close" aria-label="Fechar imagem" class="absolute top-4 right-4 text-white/70 hover:text-white transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[90vh] rounded-xl shadow-2xl object-contain cursor-default" />
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox') as HTMLElement;
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+
+    function openLightbox(src: string, alt: string) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt;
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    // Tornar clicáveis todas as imagens do post
+    document.querySelectorAll<HTMLImageElement>('.prose img').forEach((img) => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+
+    // Fechar ao clicar no overlay ou no botão
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.getElementById('lightbox-close')!.addEventListener('click', closeLightbox);
+
+    // Fechar com ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
 </BaseLayout>
