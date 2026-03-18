@@ -4,6 +4,7 @@ import Section from '../components/common/Section.astro';
 import Card from '../components/common/Card.astro';
 import Badge from '../components/common/Badge.astro';
 import Button from '../components/common/Button.astro';
+import Icon from '../components/common/Icon.astro';
 import projects from '../data/projects.json';
 
 const featuredProjects = projects.projects.filter((p) => p.featured).slice(0, 3);
@@ -73,26 +74,7 @@ const specialties = [
         <Card>
           <div class="flex items-start gap-4">
             <div class="shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-              {specialty.icon === 'server' && (
-                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                </svg>
-              )}
-              {specialty.icon === 'layout' && (
-                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-                </svg>
-              )}
-              {specialty.icon === 'refresh' && (
-                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
-              )}
-              {specialty.icon === 'cloud' && (
-                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                </svg>
-              )}
+              <Icon name={specialty.icon as any} class="w-6 h-6 text-primary-600" />
             </div>
             <div>
               <h3 class="text-lg font-semibold text-neutral-900 mb-2">

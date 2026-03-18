@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import PostCard from '@components/blog/PostCard.astro';
 import Section from '@components/common/Section.astro';
+import Icon from '@components/common/Icon.astro';
 import { calcReadingTime } from '../../utils/reading-time';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
@@ -33,9 +34,7 @@ const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
           class="inline-flex items-center gap-2 mt-6 text-sm text-neutral-500 hover:text-primary-600 transition-colors"
           aria-label="Feed RSS do blog"
         >
-          <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20 4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
-          </svg>
+          <Icon name="rss" class="w-4 h-4 text-amber-500" />
           Feed RSS
         </a>
       </div>
@@ -69,9 +68,9 @@ const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
         <p class="text-sm font-medium text-neutral-500 mb-4 uppercase tracking-wide">Tópicos</p>
         <div class="flex flex-wrap gap-2">
           {allTags.map((tag) => (
-            <span class="inline-flex items-center rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-700">
+            <a href={`/blog/tags/${tag}`} class="inline-flex items-center rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-700 hover:bg-primary-100 hover:text-primary-700 transition-colors">
               {tag}
-            </span>
+            </a>
           ))}
         </div>
       </div>

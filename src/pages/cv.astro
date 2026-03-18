@@ -5,6 +5,7 @@ import Card from '../components/common/Card.astro';
 import Badge from '../components/common/Badge.astro';
 import Button from '../components/common/Button.astro';
 import Timeline from '../components/about/Timeline.astro';
+import Icon from '../components/common/Icon.astro';
 import experience from '../data/experience.json';
 import certifications from '../data/certifications.json';
 import education from '../data/education.json';
@@ -30,10 +31,8 @@ const featuredCertifications = certifications.certifications.filter((c) => c.fea
           </p>
         </div>
         <div class="flex-shrink-0">
-          <Button href="#" variant="secondary" size="lg" class="w-full md:w-auto">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
+          <Button variant="secondary" size="lg" class="w-full md:w-auto opacity-60 cursor-not-allowed" type="button">
+            <Icon name="download" class="w-5 h-5" />
             Baixar PDF (em breve)
           </Button>
         </div>
@@ -86,9 +85,7 @@ const featuredCertifications = certifications.certifications.filter((c) => c.fea
                 <span class="text-lg font-bold text-blue-600">IBM</span>
               )}
               {cert.icon === 'security' && (
-                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
+                <Icon name="shield" class="w-6 h-6 text-green-600" />
               )}
             </div>
             <div class="flex-1 min-w-0">
@@ -115,11 +112,7 @@ const featuredCertifications = certifications.certifications.filter((c) => c.fea
         <Card>
           <div class="flex items-start gap-4">
             <div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-              </svg>
+              <Icon name="education" class="w-6 h-6 text-primary-600" />
             </div>
             <div>
               <h3 class="font-semibold text-neutral-900">

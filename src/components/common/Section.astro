@@ -16,14 +16,16 @@ const {
   containerClass = '',
   centered = true
 } = Astro.props;
+
+const titleId = title ? `section-${title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}` : undefined;
 ---
 
-<section id={id} class:list={["py-16 sm:py-20", className]}>
+<section id={id} class:list={["py-16 sm:py-20", className]} aria-labelledby={titleId}>
   <div class:list={["max-w-6xl mx-auto px-4 sm:px-6 lg:px-8", containerClass]}>
     {(title || subtitle) && (
       <div class:list={["mb-12", centered && "text-center"]}>
         {title && (
-          <h2 class="text-3xl sm:text-4xl font-bold text-neutral-900">
+          <h2 id={titleId} class="text-3xl sm:text-4xl font-bold text-neutral-900">
             {title}
           </h2>
         )}

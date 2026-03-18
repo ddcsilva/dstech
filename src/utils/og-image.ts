@@ -1,19 +1,11 @@
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
-async function loadGoogleFont(family: string, weight: number): Promise<ArrayBuffer> {
-  const url = `https://fonts.googleapis.com/css2?family=${family}:wght@${weight}&display=swap`;
-  const cssRes = await fetch(url);
-  const css = await cssRes.text();
-
-  const fontUrlMatch = css.match(/src: url\((.+?)\) format\('(opentype|truetype|woff2?)'\)/);
-  if (!fontUrlMatch) {
-    throw new Error(`Could not find font URL for ${family}:${weight}`);
-  }
-
-  const fontRes = await fetch(fontUrlMatch[1]);
-  return fontRes.arrayBuffer();
-}
+const fontsDir = join(process.cwd(), 'src/assets/fonts');
+const interRegular = readFileSync(join(fontsDir, 'Inter-Regular.ttf'));
+const interBold = readFileSync(join(fontsDir, 'Inter-Bold.ttf'));
 
 export interface OgImageOptions {
   title: string;
@@ -23,9 +15,6 @@ export interface OgImageOptions {
 
 export async function generateOgImage(options: OgImageOptions): Promise<Buffer> {
   const { title, subtitle, tags = [] } = options;
-
-  const interBold = await loadGoogleFont('Inter', 700);
-  const interRegular = await loadGoogleFont('Inter', 400);
 
   const svg = await satori(
     {
