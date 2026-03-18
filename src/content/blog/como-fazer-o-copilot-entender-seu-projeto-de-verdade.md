@@ -326,6 +326,10 @@ Porque, no final das contas, a regra de ouro continua a mesma: **é um Copilot, 
 
 ---
 
+Se esse post abriu apetite pra ir mais a fundo, o próximo passo natural é explorar as Skills. Custom Instructions definem o que o Copilot sabe sobre o seu projeto. Skills definem o que ele consegue *fazer*, com precisão de especialista, quando o assunto muda. A arquitetura de carregamento progressivo, os gatilhos de ativação, os anti-padrões que destroem o contexto. Escrevi sobre tudo isso em [Como escrever Skills para IA que realmente funcionam](/blog/como-escrever-skills-para-ia-que-realmente-funcionam).
+
+---
+
 **Referências:**
 
 - [**The GitHub Copilot Handbook**](https://www.amazon.com.br/GitHub-Copilot-Handbook-programming-collaboration-ebook/dp/B0FLXL6HL2), de Rob Bos e Randy Pagels

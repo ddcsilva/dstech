@@ -128,6 +128,31 @@ O Angular sempre foi poderoso. O que mudou foi o compromisso com a experiência 
 
 A transição pro modelo Standalone não é só uma feature técnica. É uma declaração de que frameworks maduros podem se reinventar sem perder a identidade, desde que ouçam de verdade quem os usa no dia a dia.
 
-E isso levanta uma provocação interessante: se um conceito tão central quanto os NgModules virou opcional, quais outros pilares que hoje consideramos essenciais podem seguir o mesmo caminho amanhã?
+E isso levanta uma provocação que vale fazer em voz alta: se um conceito tão central quanto os NgModules virou opcional, quais outros pilares que hoje consideramos essenciais podem seguir o mesmo caminho amanhã? Signals já deram a resposta parcial sobre o `zone.js`. O que vem depois?
 
-Essa pergunta vai ficar na cabeça por um tempo. E é exatamente o tipo de pergunta que vale fazer.
+---
+
+## Por onde começar hoje
+
+Se você ainda não migrou pra Standalone, não precisa fazer tudo de uma vez. A estratégia que funciona:
+
+**Em projetos novos:** já começa com `ng new` no Angular 17+. Você ganha todo esse modelo por padrão, sem configuração extra.
+
+**Em projetos existentes:** comece pelos componentes folha, aqueles que não têm outros dependentes. Adicione `standalone: true`, mova as dependências pro decorador e remova do módulo. Um componente de cada vez, sem pressa. O Angular tem um schematic que automatiza parte do trabalho:
+
+```bash
+ng generate @angular/core:standalone
+```
+
+Ele converte módulos inteiros em componentes standalone de forma incremental. Não é mágica total, mas eliminate boa parte do trabalho mecânico.
+
+E se você usa IA no dia a dia, vale configurar uma skill especializada em Angular moderno pro Copilot. A diferença entre sugestões com NgModules e sugestões com Standalone + Signals + `inject()` funcional é enorme, mas isso é conversa pra outro post.
+
+---
+
+**Referências:**
+
+- [**Modern Angular**](https://leanpub.com/modern-angular), de Armen Vardanyan
+- [**Angular Blog**](https://blog.angular.io): Anúncios de versões e decisões de design
+- [**angular.dev**](https://angular.dev): Documentação oficial com os novos padrões
+- [**RFC do Angular**](https://github.com/angular/angular/discussions): Onde as decisões são debatidas antes de virar código
