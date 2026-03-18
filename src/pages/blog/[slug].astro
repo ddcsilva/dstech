@@ -7,19 +7,39 @@ export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
   return posts.map((post) => ({
     params: { slug: post.slug },
-    props: { post },
+    props: { post, allPosts: posts },
   }));
 }
 
 interface Props {
   post: CollectionEntry<'blog'>;
+  allPosts: CollectionEntry<'blog'>[];
 }
 
-const { post } = Astro.props;
-const { Content } = await post.render();
+const { post, allPosts } = Astro.props;
+const { Content, headings } = await post.render();
 
 const readingTime = calcReadingTime(post.body);
 const ogImage = post.data.image || `/og/${post.slug}.png`;
+
+// Posts relacionados: mesmas tags, excluindo o atual, ordenados por mais tags em comum
+const currentTags = new Set(post.data.tags);
+const relatedPosts = allPosts
+  .filter((p) => p.slug !== post.slug)
+  .map((p) => ({
+    post: p,
+    commonTags: p.data.tags.filter((t) => currentTags.has(t)).length,
+  }))
+  .filter((p) => p.commonTags > 0)
+  .sort((a, b) => b.commonTags - a.commonTags || b.post.data.pubDate.getTime() - a.post.data.pubDate.getTime())
+  .slice(0, 3)
+  .map((p) => ({
+    slug: p.post.slug,
+    title: p.post.data.title,
+    description: p.post.data.description,
+    tags: p.post.data.tags,
+    pubDate: p.post.data.pubDate,
+  }));
 ---
 
 <BlogLayout
@@ -30,6 +50,8 @@ const ogImage = post.data.image || `/og/${post.slug}.png`;
   tags={post.data.tags}
   readingTime={readingTime}
   image={ogImage}
+  headings={headings}
+  relatedPosts={relatedPosts}
 >
   <Content />
 </BlogLayout>

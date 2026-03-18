@@ -67,6 +67,66 @@ import navigation from '../data/navigation.json';
           </Card>
         ))}
       </div>
+
+      <!-- Formulário de Contato -->
+      <div class="mt-12 pt-12 border-t border-neutral-200">
+        <h2 class="text-2xl font-bold text-neutral-900 mb-2 text-center">Envie uma mensagem</h2>
+        <p class="text-neutral-600 mb-8 text-center">Preencha o formulário abaixo e retornarei o mais breve possível.</p>
+
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6 max-w-lg mx-auto" id="contact-form">
+          <input type="hidden" name="access_key" value="03f16f09-87e0-46dd-986a-8561a1479f23" />
+          <input type="hidden" name="subject" value="Novo contato via DStech" />
+          <input type="hidden" name="from_name" value="DStech Website" />
+          <div class="sr-only" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div>
+            <label for="name" class="block text-sm font-medium text-neutral-700 mb-1">Nome</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full rounded-lg border border-neutral-300 px-4 py-2.5 text-neutral-900 placeholder-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition"
+              placeholder="Seu nome"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-neutral-700 mb-1">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full rounded-lg border border-neutral-300 px-4 py-2.5 text-neutral-900 placeholder-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition"
+              placeholder="seu@email.com"
+            />
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-neutral-700 mb-1">Mensagem</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="5"
+              class="w-full rounded-lg border border-neutral-300 px-4 py-2.5 text-neutral-900 placeholder-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition resize-y"
+              placeholder="Escreva sua mensagem..."
+            ></textarea>
+          </div>
+
+          <div>
+            <Button type="submit" variant="primary" size="lg" class="w-full justify-center">
+              Enviar mensagem
+            </Button>
+          </div>
+
+          <div id="form-result" class="text-center text-sm font-medium hidden"></div>
+        </form>
+      </div>
     </div>
   </Section>
 </BaseLayout>
@@ -79,6 +139,30 @@ import navigation from '../data/navigation.json';
         const u = 'danilo.silva';
         const d = 'msn.com';
         window.location.href = 'mailto:' + u + '@' + d;
+      });
+    }
+
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    const result = document.getElementById('form-result');
+    if (form && result) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        result.className = 'text-center text-sm font-medium';
+        result.textContent = 'Enviando...';
+
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+        });
+
+        if (response.ok) {
+          result.className = 'text-center text-sm font-medium text-green-600';
+          result.textContent = 'Mensagem enviada com sucesso! Obrigado pelo contato.';
+          form.reset();
+        } else {
+          result.className = 'text-center text-sm font-medium text-red-600';
+          result.textContent = 'Erro ao enviar. Tente novamente ou use o email diretamente.';
+        }
       });
     }
   });
