@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "astro-developer": {
+      "source": "withastro/astro",
+      "sourceType": "github",
+      "computedHash": "39c07ad110ba70cfa4f1c196baf6ce5621df0030a66b0920e75c8fafc55ea14e"
+    },
+    "content-creator": {
+      "source": "Shubhamsaboo/awesome-llm-apps",
+      "sourceType": "github",
+      "computedHash": "4c8c5eb0a945c3c50d845145fbe3d4347b599eb531cbeb154099276a4bb4a6b6"
+    }
+  }
+}
