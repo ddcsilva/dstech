@@ -28,25 +28,7 @@ import navigation from '../data/navigation.json';
   <!-- Links de Contato -->
   <Section>
     <div class="max-w-3xl mx-auto">
-      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- Email -->
-        <Card class="text-center">
-          <div class="flex flex-col items-center">
-            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
-              <Icon name="mail" class="w-8 h-8 text-primary-600" />
-            </div>
-            <h3 class="text-lg font-semibold text-neutral-900 mb-2">
-              Email
-            </h3>
-            <p class="text-sm text-neutral-500 mb-4">
-              Entre em contato direto para dúvidas e networking
-            </p>
-            <Button variant="primary" size="md" class="email-link-btn" type="button">
-              Enviar Email
-            </Button>
-          </div>
-        </Card>
-
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {navigation.social.map((social) => (
           <Card class="text-center">
             <div class="flex flex-col items-center">
@@ -133,15 +115,6 @@ import navigation from '../data/navigation.json';
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    const btn = document.querySelector('.email-link-btn');
-    if (btn) {
-      btn.addEventListener('click', () => {
-        const u = 'danilo.silva';
-        const d = 'msn.com';
-        window.location.href = 'mailto:' + u + '@' + d;
-      });
-    }
-
     const form = document.getElementById('contact-form') as HTMLFormElement | null;
     const result = document.getElementById('form-result');
     if (form && result) {
