@@ -54,8 +54,6 @@ A estrutura física é simples: uma pasta nomeada com um arquivo `SKILL.md` e, o
 
 O `SKILL.md` não é um arquivo de documentação: é um **system prompt especializado** que a IA carrega dinamicamente quando julga que aquela skill é relevante pra tarefa atual.
 
-![Estrutura de pastas de skills no explorador de arquivos: pasta .agents/skills com subpastas dotnet-architect (SKILL.md + resources), content-creator (SKILL.md) e api-reviewer (SKILL.md + scripts), ilustrando a organização modular de capacidades especializadas.](/images/blog/estrutura-pastas-skills.png)
-
 ---
 
 ## Como o carregamento progressivo funciona (e por que você precisa saber disso)
@@ -107,8 +105,6 @@ Arquivos externos na pasta da skill (scripts `.js`, `.py`, documentos de referê
 
 **Token Bleed:** se o `SKILL.md` não descrever clara e explicitamente como invocar o script e o que ele faz, a IA pode tentar ler o código-fonte do script pra *adivinhar* o funcionamento. O resultado: desperdício de tokens lendo Python ou JavaScript quando deveria estar lendo o output. Sempre documente: "Execute `scripts/scan-repo.js`. O script retorna JSON com as dependências mapeadas."
 
-![Diagrama das três camadas de carregamento progressivo de uma skill: Camada 1 (Metadados YAML) sempre no contexto, Camada 2 (Corpo do SKILL.md) injetada sob demanda quando a skill é ativada, e Camada 3 (Scripts e Resources) acessada apenas por chamada explícita das instruções.](/images/blog/carregamento-progressivo-skills.png)
-
 ---
 
 > **Por que os exemplos de skill estão em inglês?**
@@ -155,8 +151,6 @@ E finalmente: exemplos de interações esperadas e preferências de estilo de c�
 **Por que essa skill funciona tão bem?**
 
 Ela cobre os três eixos que definem uma skill de alta qualidade: o *domínio* (expertise técnica), o *comportamento* (como raciocinar), e a *saída* (como o código resultante deve parecer). A IA não recebe só regras: recebe uma persona completa de especialista sênior.
-
-![Comparação lado a lado: sem skill dotnet-architect a IA sugere código genérico com padrões desatualizados; com a skill ativa o código usa primary constructors, Result types e async/await corretos, ilustrando o impacto da persona especializada no resultado.](/images/blog/antes-depois-skill-dotnet-architect.png)
 
 ---
 
